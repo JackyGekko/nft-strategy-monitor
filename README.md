@@ -2,6 +2,8 @@
 
 A web application for monitoring NFT Strategy contracts and executing `buyTargetNFT()` calls to purchase NFTs using accumulated trading fees.
 
+🚀 **Live Demo**: [Deployed on Vercel](https://nft-strategy-monitor.vercel.app)
+
 ## Features
 
 - **Real-time Monitoring**: Monitor multiple NFT Strategy contracts simultaneously
