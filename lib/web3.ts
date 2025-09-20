@@ -26,9 +26,9 @@ export class Web3Service {
       ]);
 
       return {
-        currentFees: this.web3.utils.fromWei(currentFees, 'ether'),
-        ethToTwap: this.web3.utils.fromWei(ethToTwap, 'ether'),
-        collection: collection.toLowerCase(),
+        currentFees: this.web3.utils.fromWei(String(currentFees), 'ether'),
+        ethToTwap: this.web3.utils.fromWei(String(ethToTwap), 'ether'),
+        collection: String(collection).toLowerCase(),
         priceMultiplier: Number(priceMultiplier),
         blockNumber: await this.web3.eth.getBlockNumber(),
       };
@@ -45,8 +45,8 @@ export class Web3Service {
       const price = await contract.methods.nftForSale(tokenId).call();
       return {
         tokenId,
-        price: price > 0 ? this.web3.utils.fromWei(price, 'ether') : '0',
-        isForSale: price > 0,
+        price: Number(price) > 0 ? this.web3.utils.fromWei(String(price), 'ether') : '0',
+        isForSale: Number(price) > 0,
       };
     } catch (error) {
       console.error('Error checking NFT for sale:', error);
@@ -77,10 +77,10 @@ export class Web3Service {
       for (let i = 1; i <= Math.min(Number(balance), limit); i++) {
         try {
           const price = await contract.methods.nftForSale(i).call();
-          if (price > 0) {
+          if (Number(price) > 0) {
             nftsForSale.push({
               tokenId: i,
-              price: this.web3.utils.fromWei(price, 'ether'),
+              price: this.web3.utils.fromWei(String(price), 'ether'),
             });
           }
         } catch (e) {

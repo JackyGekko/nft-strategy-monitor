@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: {
-    CUSTOM_KEY: 'my-value',
-  },
+  // Remove any experimental features that might cause issues
+  reactStrictMode: true,
+  swcMinify: true,
 }
 
 module.exports = nextConfig

@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       strategy.marketplaceAddress
     ).send({
       from: account.address,
-      gas: 500000,
+      gas: '500000',
     });
 
     return NextResponse.json({
